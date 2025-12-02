@@ -1,4 +1,3 @@
-// src/services/data.ts
 import { type User } from '../types/index';
 
 export const PROFESSIONS = ['Mühendis', 'Tasarımcı', 'İK Uzmanı', 'Geliştirici', 'Yönetici'];

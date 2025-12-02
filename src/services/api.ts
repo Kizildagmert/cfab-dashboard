@@ -169,7 +169,7 @@ export async function createUser(input: CreateUserInput): Promise<User> {
 
       const newUser: User = {
         id: nextId,
-        createdAt: new Date().toISOString().slice(0, 10), // YYYY-MM-DD
+        createdAt: new Date().toISOString().slice(0, 10),
         ...input,
       };
 

@@ -5,7 +5,7 @@ interface AuthUser {
 }
 
 export const useRole = () => {
-  // localStorage'dan kullanıcı verisini oku
+  // localStorage dan kullanıcı verisini oku
   const userString = localStorage.getItem('user');
   
   const user = useMemo(() => {
@@ -21,9 +21,7 @@ export const useRole = () => {
   }, [userString]);
 
   return {
-    // Rolü geri veriyoruz
     userRole: user?.role || null,
-    // Kolay kullanım için isAdmin flag'i
     isAdmin: user?.role === 'admin',
   };
 };

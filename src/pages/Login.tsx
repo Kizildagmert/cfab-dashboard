@@ -1,18 +1,18 @@
-// src/pages/Login.tsx
-import { useForm } from 'react-hook-form';
-import { useNavigate } from 'react-router-dom';
-import { z } from 'zod';
-import { zodResolver } from '@hookform/resolvers/zod';
-import { login as apiLogin } from '../services/api';
-import { useAuthStore, type AuthState } from '../store/authStore';
+import { useForm } from "react-hook-form";
+import { useNavigate } from "react-router-dom";
+import { z } from "zod";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { login as apiLogin } from "../services/api";
+import { useAuthStore, type AuthState } from "../store/authStore";
+import { toast } from "sonner";
 
 // Validasyon şeması
 const loginSchema = z.object({
   email: z
     .string()
-    .min(1, 'E-posta zorunludur')
-    .email('Geçerli bir e-posta adresi giriniz'),
-  password: z.string().min(6, 'Şifre en az 6 karakter olmalıdır'),
+    .min(1, "E-posta zorunludur")
+    .email("Geçerli bir e-posta adresi giriniz"),
+  password: z.string().min(6, "Şifre en az 6 karakter olmalıdır"),
 });
 
 type LoginFormInputs = z.infer<typeof loginSchema>;
@@ -34,20 +34,20 @@ export default function Login() {
     try {
       const response = await apiLogin(data.email, data.password);
 
-      // Zustand auth state
       setAuth(response.token, response.role);
 
-      // LocalStorage
-      localStorage.setItem('token', response.token);
+      localStorage.setItem("token", response.token);
       localStorage.setItem(
-        'user',
-        JSON.stringify({ email: data.email, role: response.role }),
+        "user",
+        JSON.stringify({ email: data.email, role: response.role })
       );
 
-      navigate('/dashboard');
+      navigate("/dashboard");
     } catch (error: unknown) {
-      console.error('Giriş hatası:', error);
-      alert('Giriş başarısız! Email ve şifreyi kontrol edin (şifre: 123456).');
+      console.error("Giriş hatası:", error);
+      toast.error(
+        "Giriş başarısız! Email ve şifreyi kontrol edin (şifre: 123456)."
+      );
     }
   };
 
@@ -65,14 +65,14 @@ export default function Login() {
               E-posta
             </label>
             <input
-              {...register('email')}
+              {...register("email")}
               type="email"
               placeholder="admin@crudfab.com"
               className={`w-full p-3 border rounded-lg focus:ring-2 outline-none transition
                 ${
                   errors.email
-                    ? 'border-red-500 focus:ring-red-200'
-                    : 'border-gray-300 focus:ring-blue-500'
+                    ? "border-red-500 focus:ring-red-200"
+                    : "border-gray-300 focus:ring-blue-500"
                 }
               `}
             />
@@ -88,14 +88,14 @@ export default function Login() {
               Şifre
             </label>
             <input
-              {...register('password')}
+              {...register("password")}
               type="password"
               placeholder="******"
               className={`w-full p-3 border rounded-lg focus:ring-2 outline-none transition
                 ${
                   errors.password
-                    ? 'border-red-500 focus:ring-red-200'
-                    : 'border-gray-300 focus:ring-blue-500'
+                    ? "border-red-500 focus:ring-red-200"
+                    : "border-gray-300 focus:ring-blue-500"
                 }
               `}
             />
@@ -111,16 +111,20 @@ export default function Login() {
             type="submit"
             className="w-full bg-blue-600 text-white p-3 rounded-lg hover:bg-blue-700 transition disabled:opacity-70 disabled:cursor-not-allowed font-medium"
           >
-            {isSubmitting ? 'Kontrol Ediliyor...' : 'Giriş Yap'}
+            {isSubmitting ? "Kontrol Ediliyor..." : "Giriş Yap"}
           </button>
         </form>
 
         <div className="mt-6 p-4 bg-blue-50 text-blue-800 text-sm rounded-lg border border-blue-100">
-          <p className="font-semibold mb-1">💡 Demo Bilgisi:</p>
-          <p>E-posta: istediğin adres</p>
+          <p className="font-semibold mb-1">Demo Bilgisi:</p>
+          <p>E-posta: istediğin adres: Örnek olarak,</p>
+          <p>ahmet@crudfab.com --- Admin</p>
+          <p>ayse@crudfab.com --- User</p>
           <p>
-            Şifre: <b>123456</b>
+            Tüm Şifreler: <b>123456</b>
           </p>
+          <p>data.ts içindeki tüm kullanıcılar ile giriş yapılabilir.</p>
+          <p>Yeni eklenen kullanıcılar da login olabilir.</p>
         </div>
       </div>
     </div>

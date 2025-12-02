@@ -4,6 +4,7 @@ import { PROFESSIONS } from "../services/data";
 import { useDebounce } from "../hooks/useDebounce";
 import { useUserStore } from "../store/userStore";
 import type { User, UserRole } from "../types";
+import { toast } from "sonner";
 import {
   Search,
   Filter,
@@ -164,7 +165,7 @@ export default function Dashboard() {
       !newUserForm.tckn.trim() ||
       !newUserForm.email.trim()
     ) {
-      alert("Lütfen zorunlu alanları doldurun.");
+      toast.info("Lütfen zorunlu alanları doldurun.");
       return;
     }
 
@@ -188,7 +189,6 @@ export default function Dashboard() {
         <div className="flex items-center gap-4">
           <div className="text-right hidden sm:block">
             <p className="text-sm font-medium text-gray-700">Admin User</p>
-            <p className="text-xs text-gray-500">admin@crudfab.com</p>
           </div>
           <button
             onClick={handleLogout}
@@ -208,7 +208,8 @@ export default function Dashboard() {
               Kullanıcı Yönetimi
             </h2>
             <p className="text-gray-500 mt-1">
-              Sistemdeki tüm kullanıcılar İsim, E-Posta ve TC ile filtrelenebilir.
+              Sistemdeki tüm kullanıcılar İsim, E-Posta ve TC ile
+              filtrelenebilir.
             </p>
           </div>
           {isAdmin && (
@@ -403,8 +404,7 @@ export default function Dashboard() {
                           </span>
                         </td>
                         <td className="p-4 pr-6 text-right">
-                          <button className="text-gray-400 hover:text-gray-600 p-2 hover:bg-gray-100 rounded-full transition">
-                          </button>
+                          <button className="text-gray-400 hover:text-gray-600 p-2 hover:bg-gray-100 rounded-full transition"></button>
                         </td>
                       </tr>
                     ))}
@@ -422,7 +422,8 @@ export default function Dashboard() {
                     Sonuç Bulunamadı
                   </h3>
                   <p className="text-gray-500 text-sm mt-1">
-                    Aradığınız kişiye şu anda ulaşılamıyor lütfen daha sonra tekrar deneyiniz.
+                    Aradığınız kişiye şu anda ulaşılamıyor lütfen daha sonra
+                    tekrar deneyiniz.
                   </p>
                 </div>
               )}

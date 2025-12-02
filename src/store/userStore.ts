@@ -1,4 +1,3 @@
-// src/store/userStore.ts
 import { create } from 'zustand';
 import type {
   ApiError,
@@ -17,7 +16,7 @@ type CreateUserInput = {
   email: string;
   profession: string;
   role: UserRole;
-  status: User['status']; // 'active' | 'passive'
+  status: User['status']; // 'aktif' | 'pasif'
 };
 
 interface UserListState {
@@ -112,8 +111,6 @@ export const useUserStore = create<UserListState>((set, get) => ({
 
     try {
       await api.createUser(input);
-      // Yeni kullanıcı eklendikten sonra listeyi baştan çek
-      // İstersen her zaman 1. sayfaya dönebilirsin:
       set({ page: 1 });
       await get().fetchUsers();
     } catch (error: unknown) {

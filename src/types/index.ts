@@ -1,4 +1,3 @@
-// src/types/index.ts
 export type UserRole = 'admin' | 'user';
 export type UserStatus = 'active' | 'passive';
 
