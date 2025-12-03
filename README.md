@@ -1,4 +1,4 @@
-##Teknolojiler ve Araçlar
+## Teknolojiler ve Araçlar
 
 React + Vite
 TypeScript
@@ -10,7 +10,7 @@ lucide(icons)
 React Router DOM
 Mock API(backend)
 
-Kritik gereksinimler için:
+## Kritik gereksinimler için:
 
 Auth State (Login / Logout):
 
@@ -18,13 +18,13 @@ token ve rol bilgisi localStorage'a kaydedilir.
 Kullanıcı logout yaptığında token ve rol bilgisi clear edilir.
 
 
-Role göre yetkilendirme:
+## Role göre yetkilendirme:
 
 Role göre conditional bir durum söz konusudur.
 Eğer kullanıcı "admin" ise sisteme kullanıcı ekleyebilir.
 Eğer kullanıcı "user" rolüne sahipse kullanıcı ekle butonunu göremez.
 
-Filtreme:
+## Filtreme:
 
 Kullanıcı Ad Soyad E-posta Tc ile filtreleme yapabilir.
 büyük küçük harf duyarsız
@@ -36,12 +36,12 @@ Meslek grubu dropdown seçimli
 
 Filtre ve sort değiştiğinde sayfa direkt 1 e atar.
 
-Sayfalama, Liste:
+## Sayfalama, Liste:
 
 page,size, total zustand içinde tutulur.
 Tablo başlıklarına tıklayınca sort yapılabilir.(sort state değişir.)
 
-Yeni kullanıcı ekleme:
+## Yeni kullanıcı ekleme:
 
 Sadece admin kullanıcılar kullanıcı ekleyebilir.
 
