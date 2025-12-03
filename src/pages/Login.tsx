@@ -123,8 +123,6 @@ export default function Login() {
           <p>
             Tüm Şifreler: <b>123456</b>
           </p>
-          <p>data.ts içindeki tüm kullanıcılar ile giriş yapılabilir.</p>
-          <p>Yeni eklenen kullanıcılar da login olabilir.</p>
         </div>
       </div>
     </div>

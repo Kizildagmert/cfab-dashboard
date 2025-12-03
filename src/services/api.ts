@@ -107,15 +107,14 @@ export async function getUsers(
 
           if (fullName.includes(search)) return true;
           if (email.includes(search)) return true;
-          if (u.tckn.includes(raw)) return true;
-
           return false;
         });
       }
 
       if (filters.tcknPrefix.trim()) {
+        const prefix = filters.tcknPrefix.trim();
         result = result.filter((u) =>
-          u.tckn.startsWith(filters.tcknPrefix.trim()),
+          u.tckn.startsWith(prefix)
         );
       }
 

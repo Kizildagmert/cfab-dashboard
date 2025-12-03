@@ -156,6 +156,11 @@ export default function Dashboard() {
     setPage(1);
   };
 
+const isValidTckn = (value: string): boolean => {
+  return /^\d{11}$/.test(value); // sadece 11 rakam
+};
+
+
   const handleCreateSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
@@ -168,8 +173,13 @@ export default function Dashboard() {
       toast.info("Lütfen zorunlu alanları doldurun.");
       return;
     }
+    if (!isValidTckn(newUserForm.tckn)) {
+    toast.error('TCKN 11 haneli ve sadece rakamlardan oluşmalıdır.');
+    return;
+  }
 
     await createUser(newUserForm);
+    toast.success("Yeni kullanıcı başarıyla oluşturuldu.");
     closeCreateModal();
   };
 
@@ -232,7 +242,7 @@ export default function Dashboard() {
             </div>
             <input
               type="text"
-              placeholder="İsim, E-posta veya TC ile ara..."
+              placeholder="Ad, soyad ile arama"
               value={searchInput}
               onChange={(e) => {
                 setSearchInput(e.target.value);
@@ -262,6 +272,22 @@ export default function Dashboard() {
                 </option>
               ))}
             </select>
+          </div>
+          <div className="md:col-span-3">
+            <label className="block text-xs font-semibold text-gray-500 mb-1 uppercase tracking-wide">
+              Tckn ile arama
+            </label>
+            <input
+              type="text"
+              maxLength={11}
+              placeholder="Tc ile arama"
+              value={filters.tcknPrefix}
+              onChange={(e) => {
+                setFilters({ tcknPrefix: e.target.value });
+                setPage(1);
+              }}
+              className="w-full p-2.5 bg-gray-50 border border-gray-200 rounded-lg focus:bg-white focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all"
+            />
           </div>
         </div>
 
