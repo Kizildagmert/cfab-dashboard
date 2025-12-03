@@ -1,11 +1,4 @@
-PROJEYI CALISTIRMA:
-
-npm install
-npm run dev
-
-
-
-Teknolojiler ve Araçlar
+##Teknolojiler ve Araçlar
 
 React + Vite
 TypeScript
@@ -13,6 +6,7 @@ Zustand(state management)
 React Hook form + zod (login)
 Tailwindcss
 Sonner (toast notifications)
+lucide(icons)
 React Router DOM
 Mock API(backend)
 
@@ -57,6 +51,15 @@ Eklenen kullanıcı localStorage da saklanır. Buradaki amaç eklenen kullanıc�
 Mock Backend:
 
 Backend simüle edilmeye çalışılmıştır.
+
+
+PROJEYI CALISTIRMA:
+```bash
+
+npm install
+
+npm run dev
+
 
 
 
