@@ -117,9 +117,9 @@ export default function Login() {
 
         <div className="mt-6 p-4 bg-blue-50 text-blue-800 text-sm rounded-lg border border-blue-100">
           <p className="font-semibold mb-1">Demo Bilgisi:</p>
-          <p>E-posta: istediğin adres: Örnek olarak,</p>
-          <p>ahmet@crudfab.com --- Admin</p>
-          <p>ayse@crudfab.com --- User</p>
+          <p>E-posta: istediğin adres: <b>Örnek olarak,</b></p>
+          <p>ahmet.yilmaz@crudfab.com --- Admin</p>
+          <p>ayse.demir@crudfab.com --- User</p>
           <p>
             Tüm Şifreler: <b>123456</b>
           </p>
